@@ -1,0 +1,21 @@
+{
+   "firstName":"Duke",
+   "lastName":"Java",
+   "married": false,
+   "childrens": true,
+   "age":25,
+   "streetAddress":"100 Internet Dr",
+   "city":"JavaTown",
+   "state":"JA",
+   "postalCode":"12345",
+   "phoneNumbers":[
+      {
+         "type":"mobile",
+         "number":"111-111-1111"
+      },
+      {
+         "type":"home",
+         "number":"222-222-2222"
+      }
+   ]
+}

@@ -1,0 +1,18 @@
+
+{
+    "firstName":"Duke",
+    "lastName":"Java",
+    "streetAddress":"100 Internet Dr",
+    "city":"JavaTown",
+    "state":"JA",
+    "phoneNumbers":[
+        {
+            "type":"mobile",
+            "number":"111-111-1111"
+        },
+        {
+            "type":"home",
+            "number":"222-222-2222"
+        }
+    ]
+}
