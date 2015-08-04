@@ -1,0 +1,48 @@
+{
+   "firstName":"Duke",
+   "lastName":"Java",
+   "age":20,
+   "city":"JavaTown",
+   "state":"JA",
+   "postalCode":12345,
+   "other":null,
+   "married":false,
+   "phoneNumbers":[
+      [
+         {
+            "type":"mobile",
+            "number":"111-111-1111"
+         },
+         {
+            "type":"home",
+            "number":"222-222-2222"
+         }
+      ]
+   ],
+   "addresses":{
+      "Americas":{
+         "United States":{
+            "address":"Oracle Corporation, 500 Oracle Parkway, Redwood Shores, CA 94065",
+            "city":"Redwood City"
+         }
+      },
+      "Europe":{
+         "Romania":{
+            "address":"Floreasca Park, 43 Soseaua Pipera, corp B. Sector 2",
+            "city":"Bucharest",
+            "jobs":[
+               {
+                  "position":"Software Developer",
+                  "location":"Romania-Bucharest",
+                  "job type":"Regular Employee Hire"
+               },
+               {
+                  "position":"Architect (IaaS & PaaS)",
+                  "location":"UK-London, Romania-Bucharest, UK-Sheffield",
+                  "job type":"Regular Employee Hire"
+               }
+            ]
+         }
+      }
+   }
+}
