@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <title>Create configurable automatic timers</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style type="text/css">
+            html, body{margin:10px;}
+            ul{margin:4px;}
+            p{padding:0px;margin:2px;}
+            label{font-weight:normal;display:block;}
+            div{border:1px solid #444;padding:10px;}
+            .primary{color:#337ab7;}
+            .success{color:#3c763d;}
+            .default{color:#777;}
+            .error{color:#a94442;}
+        </style>
+    </head>
+    <body>
+        <div id="response" style="width:47%;height:435px;float:right;overflow:auto;">
+        </div>
+        <div style="width:47%;">
+            <form id="paramsForm">
+                <label for="availableWeekDaysId">
+                    Select the name of the day or multiple names from a week when you wish the timer to be executed:
+                </label>
+                <select id="availableWeekDaysId" name="availableWeekDays" multiple="">
+                    <option value="">Select</option>
+                    <option value="*">Every day</option>
+                    <option value="Mon">Monday</option>
+                    <option value="Tue">Tuesday</option>
+                    <option value="Wed">Wednesday</option>
+                    <option value="Thu">Thursday</option>
+                    <option value="Fri">Friday</option>
+                    <option value="Sat">Saturday</option>
+                    <option value="Sun">Sunday</option>
+                </select>
+                <label for="availableMonthsDaysId">
+                    <strong>Or</strong>, select the day of month when you wish the timer to be executed:
+                </label>
+                <select id="availableMonthsDaysId" name="availableMonthsDays" multiple="">
+                    <option value="">Select</option>
+                    <option value="1st">1st</option>
+                    <option value="2nd">2nd</option>
+                    <option value="3rd">3rd</option>
+                    <option value="4th">4th</option>
+                    <option value="Last">Last day of</option>
+                    <option value="Mon">Monday</option>
+                    <option value="Tue">Tuesday</option>
+                    <option value="Wed">Wednesday</option>
+                    <option value="Thu">Thursday</option>
+                    <option value="Fri">Friday</option>
+                    <option value="Sat">Saturday</option>
+                    <option value="Sun">Sunday</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>>
+                </select>
+                <label for="availableMonthsId">
+                    Select the name of the month or multiple names from a year when you wish the timer to be executed:
+                </label>
+                <select id="availableMonthsId" name="availableMonths" multiple="">
+                    <option value="">Select</option>
+                    <option value="*">Every month</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">February</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">September</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                </select>
+                <label for="hourId">
+                    Insert the hour when you wish the timer to be executed:
+                </label>
+                <input id="hourId" type="text" name="hour"/>
+                <label for="minuteId">
+                    Insert the minute when you wish the timer to be executed:
+                </label>
+                <input id="minuteId" type="text" name="minute"/>
+                <label for="secondId">
+                    Insert the second when you wish the timer to be executed:
+                </label>
+                <input id="secondId" type="text" name="second"/>
+                <label for="nameId">
+                    Insert the name for this timer:
+                </label>
+                <input id="nameId" type="text" name="name"/>
+                <label>
+                    <input type="checkbox" name="persistent"/>
+                    Keep timer after server shutdown or server crashes?
+                </label>
+                <button type="submit">Create timer</button>
+            </form>
+        </div>
+
+        <button id="getAllTimers" type="button">Get timers list</button>
+        <button id="stopAllTimers" type="button">Stop all timers</button>
+
+        <form id="timerInfoForm">
+            <label for="timerInfoId">
+                Insert the name of the timer:
+            </label>
+            <input id="timerInfoId" type="text" name="timerInfo"/>
+            <button type="submit">Get timer description</button>
+        </form>
+
+        <form id="stopTimerForm">
+            <label for="timerId">
+                Insert the name of the timer:
+            </label>
+            <input id="timerId" type="text" name="timer"/>
+            <button type="submit">Stop timer</button>
+        </form>
+
+        <!-- WebSockets -->
+        <script src="src/js/websocket.js" type="text/javascript"/>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
+        <script>
+            $(document).ready(function () {
+                // Get timers list
+                $('#getAllTimers').click(function () {
+                    doSend('Get registered timers list..', 'getAllTimers');
+                });
+
+                // Get timer description
+                $('#timerInfoForm').submit(function (event) {
+                    var data = '';
+                    jQuery.each($('#timerInfoForm :input').serializeArray(), function (i, field) {
+                        data = field.value;
+                    });
+                    doSend('Get timer "' + data + '" description..', 'getTimerDescription:' + data);
+                    event.preventDefault();
+                });
+
+                // Stop all timers
+                $('#stopAllTimers').click(function () {
+                    doSend('Stop all timers..', 'stopAllTimers');
+                });
+
+                // Stop timer
+                $('#stopTimerForm').submit(function (event) {
+                    var data = '';
+                    jQuery.each($('#stopTimerForm :input').serializeArray(), function (i, field) {
+                        data = field.value;
+                    });
+                    doSend('Stopping timer "' + data + '"..', 'stopTimer:' + data);
+                    event.preventDefault();
+                });
+
+                // Validate form params and register timer
+                $('#paramsForm').submit(function (event) {
+                    var fields = $('#paramsForm :input').serializeArray();
+                    var data = '';
+                    var id = '';
+                    jQuery.each(fields, function (i, field) {
+                        if (id === field.name) {
+                            data = data + ', ' + field.value;
+                        } else {
+                            data = data + '","' + field.name + '":"' + field.value;
+                        }
+                        id = field.name;
+                    });
+                    data = data.slice(2);
+                    doSend('Register timer.. sending form parameters..', 'params:{' + data + '"}');
+                    event.preventDefault();
+                });
+            });
+        </script>
+    </body>
+</html>
